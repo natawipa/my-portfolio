@@ -1,7 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <Navbar />
@@ -13,8 +25,8 @@ export default function Home() {
           {/* Text Content */}
           <div className="lg:w-1/2 mb-12 lg:mb-0 lg:pl-12 order-2 lg:order-1">
             <h1 className="font-bold mb-8 leading-tight font-heading">
-              <span className="block text-5xl lg:text-6xl mb-3">WELCOME TO THE</span>
-              <span className="block text-7xl lg:text-9xl">PORTFOLIO</span>
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 whitespace-nowrap">WELCOME TO THE</span>
+              <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-9xl whitespace-nowrap">PORTFOLIO</span>
             </h1>
             <p className="text-lg lg:text-xl text-[var(--foreground)]/80 max-w-md leading-relaxed font-body ml-2">
               Hi there! I&apos;m Earn, a third-year Software and Knowledge Engineering student at Kasetsart University. Pleased to meet you!
@@ -24,12 +36,13 @@ export default function Home() {
           {/* Computer Illustration */}
           <div className="lg:w-1/2 flex justify-center lg:justify-end mb-8 lg:mb-0 order-1 lg:order-2">
             <Image
-              src="/computer.svg"
-              alt="Computer Illustration"
+              src={theme === "dark" ? "/com_dm.svg" : "/com_lm.svg"}
+              alt="Computer workstation illustration showing modern development setup"
               width={500}
               height={400}
-              className="w-full max-w-lg h-auto mt-16 lg:mt-20"
+              className="w-full max-w-lg h-auto mt-16 lg:mt-20 transition-opacity duration-300"
               priority
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </main>

@@ -23,7 +23,16 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.6s ease;
+}
+
+/* Apply smooth theme transitions to layout elements */
+div,
+section,
+nav,
+button,
+svg {
+  transition: background-color 0.6s ease, border-color 0.6s ease, fill 0.6s ease, stroke 0.6s ease;
 }
 
 html {

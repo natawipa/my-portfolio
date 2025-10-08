@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
+import { WordsPullUp } from "@/components/WordsPullUp";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 
@@ -21,14 +22,22 @@ export default function Home() {
       {/* Home Section */}
       <section id="home" className="min-h-screen flex items-center">
         {/* Main Content */}
-        <main className="flex flex-col lg:flex-row items-center justify-between px-6 lg:px-8 py-12 lg:py-24 w-full">
+        <main className="flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12 xl:px-16 py-12 lg:py-24 w-full max-w-7xl mx-auto">
           {/* Text Content */}
-          <div className="lg:w-1/2 mb-12 lg:mb-0 lg:pl-12 order-2 lg:order-1">
-            <h1 className="font-bold mb-8 leading-tight font-heading">
-              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 whitespace-nowrap">WELCOME TO THE</span>
-              <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-9xl whitespace-nowrap">PORTFOLIO</span>
-            </h1>
-            <p className="text-lg lg:text-xl text-[var(--foreground)]/80 max-w-md leading-relaxed font-body ml-2">
+          <div className="lg:w-1/2 mb-12 lg:mb-0 lg:pl-12 order-2 lg:order-1 text-center lg:text-left">
+            <div className="font-bold mb-8 leading-tight font-heading">
+              <WordsPullUp 
+                text="WELCOME TO THE" 
+                className="text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl mb-2 whitespace-nowrap"
+                align="responsive"
+              />
+              <WordsPullUp 
+                text="PORTFOLIO" 
+                className="text-7xl sm:text-8xl md:text-8xl lg:text-8xl xl:text-[8rem] 2xl:text-[10rem] whitespace-nowrap"
+                align="responsive"
+              />
+            </div>
+            <p className="text-lg sm:text-xl md:text-xl lg:text-xl xl:text-xl text-[var(--foreground)]/80 max-w-md mx-auto lg:mx-0 leading-relaxed font-body">
               Hi there! I&apos;m Earn, a third-year Software and Knowledge Engineering student at Kasetsart University. Pleased to meet you!
             </p>
           </div>
@@ -49,29 +58,32 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="min-h-screen flex items-center justify-center px-6 lg:px-8 py-24">
+      <section id="about" className="min-h-screen flex items-center justify-center px-6 lg:px-12 xl:px-16 py-24">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-6xl font-bold mb-8 font-heading">
-            ABOUT ME
-          </h2>
+          <WordsPullUp 
+            text="ABOUT ME" 
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-bold mb-8 font-heading whitespace-nowrap"
+          />
         </div>
       </section>
 
       {/* Work Section */}
-      <section id="work" className="min-h-screen flex items-center justify-center px-6 lg:px-8 py-24">
+      <section id="work" className="min-h-screen flex items-center justify-center px-6 lg:px-12 xl:px-16 py-24">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl lg:text-6xl font-bold mb-16 text-center font-heading">
-            MY WORK
-          </h2>
+          <WordsPullUp 
+            text="MY WORK" 
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-bold mb-16 text-center font-heading whitespace-nowrap"
+          />
         </div>
       </section>
 
       {/* Play Section */}
-      <section id="play" className="min-h-screen flex items-center justify-center px-6 lg:px-8 py-24">
+      <section id="play" className="min-h-screen flex items-center justify-center px-6 lg:px-12 xl:px-16 py-24">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-6xl font-bold mb-16 font-heading">
-            LET&apos;S PLAY
-          </h2>
+          <WordsPullUp 
+            text="LET'S PLAY" 
+            className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-bold mb-16 font-heading whitespace-nowrap"
+          />
         </div>
       </section>
     </div>

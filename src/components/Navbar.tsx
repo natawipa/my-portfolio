@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Menu } from "lucide-react";
 
 interface NavItem {
@@ -27,7 +28,7 @@ export function Navbar() {
   const [mounted, setMounted] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("/#home");
 
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
 
   // Initialize component and setup scroll listener
   useEffect(() => {
@@ -67,19 +68,6 @@ export function Navbar() {
       sections.forEach((section) => observer.unobserve(section));
     };
   }, []);
-
-  // Handle keyboard events for theme toggle
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      setTheme(theme === "dark" ? "light" : "dark");
-    }
-  };
-
-  // Handle theme toggle
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
 
   if (!mounted) return null;
 
@@ -135,39 +123,7 @@ export function Navbar() {
           {/* Controls */}
           <div className="flex items-center space-x-4 ml-auto">
             {/* Theme Toggle */}
-            <div
-              role="button"
-              tabIndex={0}
-              aria-label="Toggle theme"
-              className="relative p-2 rounded-md text-[var(--foreground)] hover:bg-[var(--background)] cursor-pointer"
-              style={{ transition: "none" }}
-              onClick={toggleTheme}
-              onKeyDown={handleKeyDown}
-            >
-              <div className="relative w-6 h-6 overflow-hidden">
-                {theme === "dark" ? (
-                  <div className="absolute inset-0 animate-in slide-in-from-left duration-300">
-                    <Image 
-                      src="/sun.svg" 
-                      alt="Sun" 
-                      width={24} 
-                      height={24} 
-                      className="w-6 h-6" 
-                    />
-                  </div>
-                ) : (
-                  <div className="absolute inset-0 animate-in slide-in-from-right duration-300">
-                    <Image 
-                      src="/moon.svg" 
-                      alt="Moon" 
-                      width={24} 
-                      height={24} 
-                      className="w-6 h-6" 
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
+            <ThemeToggle />
 
             {/* Mobile Menu Button */}
             <Button
